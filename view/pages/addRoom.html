@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <title>登记入住</title> -->
+  <link href="../style/page.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../style/bootstrap.min.css">
+  <script src="../style/jquery.min.js"></script>
+  <script src="../style/bootstrap.min.js"></script>
+</head>
+
+<div class="topnav">
+    <a href="./mainWindow.html">首页</a>
+    <a href="./rentManagement.html">租金管理</a>
+    <a class="active" href="./addRoom.html">创建房间</a>
+</div>   
+
+<body>
+  
+<div class="container">
+  <div class="row">
+      <div class="container">
+          <h2>创建房间</h2>
+          <script type="text/javascript">
+              function showfield(name){
+                  if(name=='Other')document.getElementById('div1').innerHTML='<input  type="text" name="other" id="otherAddress">';
+                  else document.getElementById('div1').innerHTML='';
+              }
+          </script>
+          <div class="form-group" >
+              <label for="roomID">地址:</label>
+              <select class="form-control"  name="addressID" id="addressID" onchange="showfield(this.options[this.selectedIndex].value)">
+                      <option selected="selected" value="英伦联邦">英伦联邦</option>
+                      <option value="后墙路">后墙路</option>
+                      <option value="新货村">新货村</option>
+                      <option value="昌东">昌东</option>
+                      <option value="Other">其他</option>
+              </select>
+          </div>
+          <div id="div1"></div>
+          <div class="form-group" >
+                  <label for="roomID">户型:</label>
+                  <select class="form-control"  name="typeID" id="typeID">
+                          <option  selected="selected" value="单身公寓">单身公寓</option>
+                          <option value="LOFT">LOFT</option>
+                          <option value="厂房">厂房</option>
+                          <option value="店面">店面</option>
+                  </select>
+          </div>
+          <div class="form-group">
+          <label for="buildingID">栋数:</label>
+          <input type="text" class="form-control" id="buildingID">
+          </div>
+          <div class="form-group">
+                  <label for="roomID">房号:</label>
+                  <input type="text" class="form-control" id="roomID">
+          </div>
+          <div class="form-group">
+                  <label for="rentID">房租:</label>
+                  <input type="text" class="form-control" id="rentID">
+          </div>
+          <button type="button" class="btn btn-success" id="createRoomButton">创建房间</button>
+          <script> require('../js/addRoom')</script>
+      </div>
+  </div>
+</div>
+
+</body>
+</html>

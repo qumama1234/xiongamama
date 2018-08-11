@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../style/page.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../style/bootstrap.min.css">
+    <script src="../style/jquery.min.js"></script>
+    <script src="../style/bootstrap.min.js"></script>
+    <script src="../js/checkout.js"></script>
+    <script src="../js/editPayment.js"></script>
+</head>
+
+<body>
+    <div>
+        <blockquote>
+            <p id="roomInfo"></p>
+        </blockquote>
+        <script>
+            // load the page
+            var selectRoom = JSON.parse(JSON.parse(localStorage.getItem('selectedRoom')));
+            if(selectRoom){
+                document.getElementById('paymentInfo').innerHTML =
+                    "   房间名称:" + selectPaymentDate.name 
+            }else{
+                document.getElementById('selectRoom').innerHTML="信息错误  重新加载页面"
+            }
+        </script>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="container">
+                <h2>住户办理退房</h2>
+                <div class="form-group">
+                    <label for="buildingID">最终水表:</label>
+                    <a id="waterLasterTime"></a>
+                    <div><a id="waterFeeInfo"></a></div>
+                    <input type="text" class="form-control" id="waterID" onchange="calulateFee()" >
+                </div>
+                <div class="form-group">
+                    <label for="roomID">最终电表:</label>
+                    <a id="electricityLasterTime"></a>
+                    <div><a id="electricityFeeInfo"></a></div>
+                    <input type="text" class="form-control" id="electricityID" onchange="calulateFee()">
+                </div>
+                <div class="form-group">
+                    <label for="rentID">房租:</label>
+                    <input type="text" class="form-control" id="rentID" onchange="calulateFee()">
+                </div>
+                <div class="form-group">
+                    <label for="rentID">清理费:</label>
+                    <input type="text" class="form-control" id="cleanFeeID" onchange="calulateFee()">
+                </div>
+                <div class="form-group">
+                    <label for="rentID">管理费:</label>
+                    <input type="text" class="form-control" id="managementFeeID" onchange="calulateFee()">
+                </div>
+                <div class="form-group">
+                    <label for="rentID">其他费用:</label>
+                    <input type="text" class="form-control" id="otherFeeID" onchange="calulateFee()">
+                </div>
+                <div class="form-group">
+                    <label for="rentID">停车费:</label>
+                    <input type="text" class="form-control" id="parkingFeeID" onchange="calulateFee()">
+                </div>
+                <div>
+                    <h3 id='totalPaymentInfo'></h3>
+                </div>
+                <button type="button" class="btn btn-success" id="editRoomButton" onclick="editPayment()">修改</button>
+            </div>
+        </div>
+        <script>
+                // var selectdCustomerDate = JSON.parse(localStorage.getItem('selectedCustomer'))
+                if(selectedCustomerData){
+                    document.getElementById('waterLasterTime').innerHTML='之前水数值为:'+selectedCustomerData.water;
+                    document.getElementById('electricityLasterTime').innerHTML='之前电数值为:'+selectedCustomerData.electricity;
+                    document.getElementById('waterID').value=selectedCustomerData.water;
+                    document.getElementById('electricityID').value=selectedCustomerData.electricity;
+                    document.getElementById('rentID').value=selectedCustomerData.rent;
+                    document.getElementById('cleanFeeID').value=selectedCustomerData.cleaningFee;
+                    document.getElementById('managementFeeID').value=selectedCustomerData.managementFee;
+                    document.getElementById('otherFeeID').value=selectedCustomerData.otherFee;
+                    document.getElementById('parkingFeeID').value=selectedCustomerData.parkingFee;
+                    document.getElementById('totalPaymentInfo').innerHTML='当前账单：'+totalPayment;
+                }
+                calulateFee()
+        </script>
+    </div>
+</body>
+
+</html>

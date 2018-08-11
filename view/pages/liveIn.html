@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+            <link href="../style/page.css" rel="stylesheet" type="text/css">
+            <link rel="stylesheet" href="../style/bootstrap.min.css">
+            <script src="../style/jquery.min.js"></script>
+            <script src="../style/bootstrap.min.js"></script>
+            <script src='../../node_modules/jquery/dist/jquery.js'></script>
+            <script src="../js/liveIn.js"></script>
+
+    <head>
+            
+<head>
+
+
+
+
+<body>
+        <div>
+                <h2>登记入住</h2>
+        </div>
+        <div>   
+                <blockquote>
+                        <p id="liveInInfo"></p>
+                </blockquote>
+                <script>
+                        // load the page
+                        var selectRoomData=JSON.parse(JSON.parse(localStorage.getItem('selectedRoom')))
+                        if(selectRoomData){
+                                document.getElementById('liveInInfo').innerHTML="    入住房间信息: \n"+
+                                "   地址:"+selectRoomData.address+
+                                "   栋数:"+selectRoomData.building+
+                                "   房间号:"+selectRoomData.roomNo+
+                                "   类型:"+selectRoomData.type+
+                                "   水表数:"+selectRoomData.water+
+                                "   电表数:"+selectRoomData.electricity;
+                        }else{
+                                console.log('there is no shit')
+                        }  
+                </script>
+        </div>
+        <div class="container">
+                
+                <div class="form-group">
+                        <label for="name">住客姓名:</label>
+                        <input type="text" class="form-control" id="name">
+                </div>
+                <div class="form-group">
+                        <label for="phoneNo">电话号码（可填）:</label>
+                        <input type="text" class="form-control" id="phoneNo">
+                </div>
+                <div class="form-group">
+                        <label for="wechat">微信号(可填):</label>
+                        <input type="text" class="form-control" id="wechat">
+                </div>
+                <div class="form-group">
+                                <label for="">阿姨费:</label>
+                                <input type="text" class="form-control" id="cleaningFee" value=0>
+                </div>
+                <div class="form-group">
+                                <label for="">物业费:</label>
+                                <input type="text" class="form-control" id="managementFee" value=0>
+                </div>
+                <div class="form-group">
+                                <label for="">附加费用:</label>
+                                <input type="text" class="form-control" id="otherFee" value=0>
+                </div>
+                <div class="form-group">
+                                <label for="">单位电费(每度电价格):</label>
+                                <input type="text" class="form-control" id="eleUnit" >
+                </div>
+                <div class="form-group">
+                                <label for="">单位水费(每顿水价格):</label>
+                                <input type="text" class="form-control" id="waterUnit">
+                </div>
+                <div class="form-group" >
+                        <label for="rentingTimeID">签约时间:</label>
+                        <select class="form-control"  id="rentingTime">
+                                <option value=1>1个月</option>
+                                <option value=2>2个月</option>
+                                <option selected="selected" value=3>3个月</option>
+                                <option value=4>4个月</option>
+                                <option value=5>5个月</option>
+                                <option value=6>6个月</option>
+                                <option value=12>1年</option>
+                                <option value=24>2年</option>
+                                <option value=36>3年</option>
+                        </select>
+                </div>
+                <script type="text/javascript">
+                        if(selectRoomData){
+                                document.getElementById('name').value=selectRoomData.address+'-'+selectRoomData.building+'栋-'+selectRoomData.roomNo+'号住户'
+                        }
+                        function showfield(){
+                                if(document.getElementById('parking').checked)document.getElementById('div1').innerHTML='停车费<input  type="text" name="other" id="parkingFee">';
+                                else document.getElementById('div1').innerHTML='';
+                        }
+                </script>
+                <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id='parking' onclick="showfield()" > 是否租车位
+                        </label>
+                </div> 
+                <div id='div1'></div>
+                <button type="button" class="btn btn-success" id="createRoomButton" onclick="liveIn()">确认入住</button>
+            </div>
+    
+</body>
+</html>

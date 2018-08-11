@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link href="../style/page.css" rel="stylesheet" type="text/css">
+          <link rel="stylesheet" href="../style/bootstrap.min.css">
+          <script src="../style/jquery.min.js"></script>
+          <script src="../style/bootstrap.min.js"></script>
+          <script src='../../node_modules/jquery/dist/jquery.js'></script>
+          <script src='../js/roomInfo.js'> </script>
+  <head>
+
+  <body>
+    <div>
+        <div>
+          <a id=roomBInfo>房间信息</a>
+        </div>
+        <div>
+            <p id=customerInfo>
+                合同详情
+            </p>
+            <!-- <a id=customerInfo>合同详情</a> -->
+        </div>
+        <a>账单记录</a>
+        <div class="table-responsive"> 
+          <table  class="table" id="paymentTable">
+            <thead>
+              <tr></tr>
+                  <th>账单名称</th>
+                  <th>截止时间</th>
+                  <th>付款金额</th>
+                  <th>付款时水数字</th>
+                  <th>付款时电数字</th>
+                  <th>已付款</th>
+                  </tr>
+            </thead>
+          </table>
+        </div> 
+    </div>
+  </body>
+
+</html>
+
+<script>
+    // load the page
+    if(roomInfo){
+            document.getElementById('roomBInfo').innerHTML=
+            "      类型:"+roomInfo.type+
+            "      房租:"+roomInfo.rent+
+            "      水表数:"+roomInfo.water+
+            "      电表数:"+roomInfo.electricity;
+    }else{
+            console.log('there is no shit')
+    }  
+</script>
